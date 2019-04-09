@@ -33,6 +33,21 @@ const indexHandler = res => {
   });
 };
 
+const assetsHandler = (url, res) => {
+  var filePath = path.join(__dirname, "..", "Public", url);
+  var extension = url.split(".")[1];
+  console.log(url);
+  fs.readFile(filePath, function(error, file) {
+    if (error) {
+      res.writeHead(500, exType.html);
+      res.end("<h1>sorry, something wentff wrong</h1>");
+    } else {
+      res.writeHead(200, exType[extension]);
+      res.end(file);
+    }
+  });
+};
+
 const errorHandler = (url, res) => {
   let filePath = path.join(__dirname, "..", "public", "404.html");
   fs.readFile(filePath, (err, file) => {
@@ -48,5 +63,6 @@ const errorHandler = (url, res) => {
 
 module.exports = {
   indexHandler: index,
+  assetsHandler: assests,
   errorHandler: errorz
 };
