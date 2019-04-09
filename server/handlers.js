@@ -60,9 +60,14 @@ const errorHandler = (url, res) => {
     }
   });
 };
+const searchHandler = (url, res) => {
+  var url1 = domain + url.split("?");
+  console.log(url.split("?")[1]);
+};
 
 module.exports = {
   index: indexHandler,
   assets: assetsHandler,
-  errorz: errorHandler
+  errorz: errorHandler,
+  search: searchHandler
 };
