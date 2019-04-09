@@ -1,11 +1,10 @@
 var handler = require("./handler.js");
 const router = (req, res) => {
   var url = req.url;
-  console.log(url);
   if (url === "/") {
-    console.log("hi");
+    handler.index(res);
   } else {
-    console.log("fail");
+    handler.errorz(url, res);
   }
 };
 

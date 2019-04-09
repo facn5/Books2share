@@ -48,5 +48,5 @@ const errorHandler = (url, res) => {
 
 module.exports = {
   indexHandler: index,
-  errorHandler: error
+  errorHandler: errorz
 };
