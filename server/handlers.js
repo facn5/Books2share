@@ -21,6 +21,7 @@ var exType = {
 
 const indexHandler = res => {
   var filePath = path.join(__dirname, "..", "public", "index.html");
+  console.log(filePath);
   fs.readFile(filePath, function(error, file) {
     if (error) {
       res.writeHead(500, exType.html);
@@ -36,7 +37,7 @@ const indexHandler = res => {
 const assetsHandler = (url, res) => {
   var filePath = path.join(__dirname, "..", "public", url);
   var extension = url.split(".")[1];
-  console.log(url);
+  console.log("assetshandler", filePath);
   fs.readFile(filePath, function(error, file) {
     if (error) {
       res.writeHead(500, exType.html);
@@ -61,8 +62,14 @@ const errorHandler = (url, res) => {
   });
 };
 
+const searchHandler = (url, res) => {
+  var url1 = domain + url.split("?");
+  console.log(url.split("?")[1]);
+};
+
 module.exports = {
   index: indexHandler,
   assets: assetsHandler,
-  errorz: errorHandler
+  errorz: errorHandler,
+  search: searchHandler
 };
