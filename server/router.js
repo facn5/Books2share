@@ -1,4 +1,4 @@
-var handler = require("./handler.js");
+var handler = require("./handlers.js");
 const router = (req, res) => {
   var url = req.url;
   if (url === "/") {

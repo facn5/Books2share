@@ -62,7 +62,7 @@ const errorHandler = (url, res) => {
 };
 
 module.exports = {
-  indexHandler: index,
-  assetsHandler: assests,
-  errorHandler: errorz
+  index: indexHandler,
+  assets: assetsHandler,
+  errorz: errorHandler
 };
