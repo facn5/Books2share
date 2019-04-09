@@ -63,13 +63,17 @@ const errorHandler = (url, res) => {
 };
 
 const searchHandler = (url, res) => {
-  var url1 = domain + url.split("?");
-  console.log(url.split("?")[1]);
+  let temp = require('./static.json');
+  let search = url.split("?")[1];
+  res.writeHead(200, exType.json);
+  console.log(search);
+  console.log(temp);
+  res.end(JSON.stringify(temp));
 };
 
 module.exports = {
   index: indexHandler,
   assets: assetsHandler,
-  errorz: errorHandler,
+  error: errorHandler,
   search: searchHandler
 };
