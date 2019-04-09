@@ -1,0 +1,22 @@
+{
+  "name": "books2share",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrfong/Books2share.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrfong/Books2share/issues"
+  },
+  "homepage": "https://github.com/mrfong/Books2share#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  }
+}

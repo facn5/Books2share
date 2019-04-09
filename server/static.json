@@ -1,0 +1,16 @@
+({
+  "book_id": "1",
+  "book_title": "Shadi's Cyber Book",
+  "publish_year": "2019",
+  "book_owner": "shadi",
+  "amount": "10",
+  "library": "Abu Salma"
+},
+{
+  "book_id": "2",
+  "book_title": "Shadi's Gaming Book",
+  "publish_year": "2018",
+  "book_owner": "shadi",
+  "amount": "20",
+  "library": "Abu Salma Public Library"
+})
