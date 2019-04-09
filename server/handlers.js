@@ -32,3 +32,21 @@ const indexHandler = res => {
     res.end();
   });
 };
+
+const errorHandler = (url, res) => {
+  let filePath = path.join(__dirname, "..", "public", "404.html");
+  fs.readFile(filePath, (err, file) => {
+    if (err) {
+      res.writeHead(500);
+      res.end("500 error");
+    } else {
+      res.writeHead(200, exType.html);
+      res.end(file);
+    }
+  });
+};
+
+module.exports = {
+  indexHandler: index,
+  errorHandler: error
+};
