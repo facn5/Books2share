@@ -8,7 +8,9 @@ function hey(value) {
         );
         return;
       }
-      response.json().then(data => {});
+      response.json().then(data => {
+        console.log(url);
+      });
     })
     .catch(err => {
       console.log("Fetch Error :-S", err);
