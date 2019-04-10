@@ -61,3 +61,19 @@ function fillBookList(data) {
 //   midClick: true,
 //   mainClass: "mfp-fade"
 // });
+
+var outButton = document.querySelector(".click"),
+  pop = document.getElementById("click_button");
+var main = document.getElementById("window");
+var shadow = document.querySelector("body");
+var hide = document.getElementById("close");
+
+function simulator_FB() {
+  "use strict";
+  main.style.display = "block";
+}
+
+function simulator_FB_close() {
+  "use strict";
+  main.style.display = "none";
+}

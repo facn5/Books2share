@@ -1,82 +1,58 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8" />
-    <title>Books2share</title>
-    <link rel="stylesheet" href="style.css" />
 
-    <body>
-      <div class="header"><h1>Books2share</h1></div>
+<head>
+  <meta charset="utf-8" />
+  <title>Books2share</title>
+  <link rel="stylesheet" href="style.css" />
 
-      <header>Welcome to our book sharing system.</header>
-      <label for="search">Search:</label>
-      <input
-        type="text"
-        id="searchinput"
-        value=""
-        placeholder="What book you are looking for?"
-      />
-      <input
-        type="button"
-        name="searchbtn"
-        value="Search"
-        onclick="hey('search?',searchinput.value)"
-      />
-      <input type="button" name="add" value="Add" />
-      <hr />
+<body>
+  <div class="header">
+    <h1>Books2share</h1>
+  </div>
+  <header>Welcome to our book sharing system.</header>
+  <label for="searchinput">Search:</label>
 
-      <div id="booksList" class="">
-        <h3>Book Title</h3>
-        <h3>Number of available books</h3>
-        <!--
-          <div id="koko">
-            <input type="button" name="reserve" value="reserve" />
-            <input type="button" name="return" value="return" />
-          </div>
-        -->
-        <div id="data"></div>
-      </div>
-      <form action="/postdata" name="myform" method="POST">
-        <div id="test-popup" class="white-popup mfp-hide">
-          <h2>Add a Book.</h2>
+  <input type="text" id="searchinput" value="" placeholder="What book you are looking for?" />
+  <input type="button" name="searchbtn" value="Search" onclick="hey('search?',searchinput.value)" />
+  <input type="button" name="add" value="Add" onclick="simulator_FB ()" id="click_button"/>
+  <hr />
+  <div id="booksList" class="">
+    <h3>Book Title</h3>
+    <h3>Number of available books</h3>
+    <!--
+            <div id="koko">
+              <input type="button" name="reserve" value="reserve" />
+              <input type="button" name="return" value="return" />
+            </div>
+            -->
+    <div id="data"></div>
+  </div>
+<br>
+  <div class="click">
 
-          Book Name
-          <input
-            type="text"
-            name="name"
-            id="ccr"
-            value=""
-            placeholder="What book you are looking for?"
-          />
-          <br />
-          Publish Year
-          <input
-            type="text"
-            id="ccd"
-            name="year"
-            value=""
-            placeholder="What book you are looking for?"
-          />
-          <br />
-          Books Amount
-          <input
-            name="amount"
-            type="text"
-            id="ccm"
-            value=""
-            placeholder="What book you are looking for?"
-          />
-        </div>
+  </div>
+  <div id="window">
+    <form action="/postdata" name="myform" method="POST">
+      Name:
+      <input name="name" type="text" id="cnm" value="" placeholder="What book you are looking for?" />
+      <br />
+      <br />
+      Year:
+      <input name="year" type="text" id="cbm" value="" placeholder="What book you are looking for?" />
+      <br />
+      <br />
+      Amount:
+      <input name="amount" type="text" id="cm" value="" placeholder="What book you are looking for?" />
+<br>
+<br>
+      <input type="submit" id="subsub" value="Submit" >
 
-        <input type="submit" id="subsub" value="Submit" />
-      </form>
-      <!--
-        <form action="/postdata" method="POST">
-          Username: <input type="text" name="usrname" /><br />
-          <input type="submit" value="Submit" />
-        </form>
-      -->
-      <script src="search.js"></script>
-    </body>
-  </head>
+      <button onclick="simulator_FB_close ()">Close</button>
+    </form>
+  </div>
+  <script src="search.js"></script>
+</body>
+</head>
+
 </html>
