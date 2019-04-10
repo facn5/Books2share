@@ -5,30 +5,43 @@
   <meta charset="utf-8" />
   <title>Books2share</title>
   <link rel="stylesheet" href="style.css" />
-</head>
+
 <body>
   <div class="header">
     <h1>Books2share</h1>
   </div>
-  
+
   <header>Welcome to our book sharing system.</header>
   <label for="search">Search:</label>
   <input type="text" id="searchinput" value="" placeholder="What book you are looking for?" />
-  <input type="button" name="searchbtn" value="Search" onclick="hey(searchinput.value)" />
+  <input type="button" name="searchbtn" value="Search" onclick="hey('search?',searchinput.value)" />
   <input type="button" name="add" value="Add" />
   <hr />
 
   <div id="booksList" class="">
     <div class="listHeaders">
       <h3>Book Title</h3>
-      <h3>Publish year</h3>
-      <h3>Available books</h3>
+      <h3>Number of available books</h3>
     </div>
-    <div id="data">
 
-    </div>
+    <div id="data"></div>
   </div>
-  <script src="search.js"></script>
+  <form action="/postdata" name="myform" method="POST">
+    <div id="test-popup" class="white-popup mfp-hide">
+      <h2>Add a Book.</h2>
+      Book Name
+      <input type="text" name="name" id="ccr" value="" placeholder="What book you are looking for?" />
+      <br />
+      Publish Year
+      <input type="text" id="ccd" name="year" value="" placeholder="What book you are looking for?" />
+      <br />
+      Books Amount
+      <input name="amount" type="text" id="ccm" value="" placeholder="What book you are looking for?" />
+    </div>
+    <input type="submit" id="subsub" value="Submit" />
+  </form>
 </body>
+</head>
+<script src="search.js"></script>
 
 </html>

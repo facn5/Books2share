@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const env2 = require("env2");
 const pg = require("pg");
+const qs = require("querystring");
 const getqueries = require("../database/queries.js");
 
 var exType = {
@@ -24,7 +25,7 @@ var exType = {
 
 const indexHandler = res => {
   var filePath = path.join(__dirname, "..", "public", "index.html");
-  console.log(filePath);
+  // console.log(filePath);
   fs.readFile(filePath, function(error, file) {
     if (error) {
       res.writeHead(500, exType.html);
@@ -37,10 +38,29 @@ const indexHandler = res => {
   });
 };
 
+
+const handlePost = (req, res) => {
+  let body = "";
+  req.on("data", chunk => {
+    body += chunk.toString();
+  });
+  req.on("end", () => {
+    if (body != null) {
+      const ps = qs.parse(body);
+      getqueries.postData(ps.name, ps.year, ps.amount, res, (err, result) => {
+        if (err) return console.log("error");
+        res.writeHead(302, {
+          Location: "/"
+        });
+        res.end();
+      });
+    }
+  });
+};
 const assetsHandler = (url, res) => {
   var filePath = path.join(__dirname, "..", "public", url);
   var extension = url.split(".")[1];
-  console.log("assetshandgetqueriesler", filePath);
+  // console.log("assetshandgetqueriesler", filePath);
   fs.readFile(filePath, function(error, file) {
     if (error) {
       res.writeHead(500, exType.html);
@@ -78,9 +98,9 @@ const searchHandler = (url, res) => {
 };
 
 const removeHandler = (url, res) => {
-  let reserve = url.split("?")[1];
-  console.log("remove query is", reserve);
-  getqueries.resBook(reserve, (err, result) => {
+  let remove = url.split("?")[1];
+  console.log("remove query is", remove);
+  getqueries.removeBook(remove, (err, result) => {
     if (err) {
       console.log("there is an error");
     }
@@ -91,7 +111,9 @@ const removeHandler = (url, res) => {
 
 module.exports = {
   index: indexHandler,
+  post: handlePost,
   assets: assetsHandler,
   error: errorHandler,
-  search: searchHandler
+  search: searchHandler,
+  remove: removeHandler
 };

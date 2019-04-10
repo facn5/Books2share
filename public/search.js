@@ -1,5 +1,8 @@
-function hey(value) {
-  fetch("search?" + value)
+// var inputField = document.getElementById("search-input");
+var x = document.getElementById("subsub");
+// x.addEventListener
+function hey(path, value) {
+  fetch(path + value)
     .then(response => {
       if (response.status !== 200) {
         console.log(
@@ -12,18 +15,19 @@ function hey(value) {
     })
     .then((myJson) => {
       fillBookList(myJson);
-    }).catch(err => {
+    })
+    .catch(err => {
       console.log("Fetch Error :-S", err);
     });
 }
 
 function remove(title) {
   console.log(title);
-  hey("remove?" + title);
+  hey("/remove?" , title);
 }
 
 function fillBookList(data) {
-  let booksList = document.getElementById('data').innerHTML = "";
+  let booksList = (document.getElementById("data").innerHTML = "");
 
   for (let i in data) {
     console.log("inside dom :" + data[i].book_title);
@@ -51,7 +55,7 @@ function fillBookList(data) {
     let btnRemove = document.createElement("input");
     btnRemove.type = "button";
     btnRemove.value = "Remove";
-    btnRemove.setAttribute("onClick", "remove(bookNum"+i+".innerText)");
+    btnRemove.setAttribute("onClick", "remove(bookNum" + i + ".innerText)");
     newBook.appendChild(title);
     newBook.appendChild(amount);
     newBook.appendChild(year);
@@ -75,4 +79,9 @@ function fillBookList(data) {
 //   if (event.keyCode === 13) {
 //     hey(document.getElementById("search-input").value);
 //   }
+// });
+// $(".open-popup-link").magnificPopup({
+//   type: "inline",
+//   midClick: true,
+//   mainClass: "mfp-fade"
 // });
