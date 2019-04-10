@@ -1,4 +1,5 @@
-var inputField = document.getElementById("search-input");
+// var inputField = document.getElementById("search-input");
+
 function hey(value) {
   fetch("search?" + value)
     .then(response => {
@@ -8,19 +9,21 @@ function hey(value) {
         );
         return;
       }
-      response.json().then(data => {
-        console.log(url);
-      });
+      console.log(response);
+      return response.json();
+    })
+    .then(myJson => {
+      console.log(JSON.stringify(myJson));
     })
     .catch(err => {
       console.log("Fetch Error :-S", err);
     });
 }
 
-inputField.addEventListener("keyup", function(event) {
-  event.preventDefault();
-
-  if (event.keyCode === 13) {
-    hey(document.getElementById("search-input").value);
-  }
-});
+// inputField.addEventListener("keyup", function(event) {
+//   event.preventDefault();
+//
+//   if (event.keyCode === 13) {
+//     hey(document.getElementById("search-input").value);
+//   }
+// });

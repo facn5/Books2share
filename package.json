@@ -18,5 +18,9 @@
   "homepage": "https://github.com/mrfong/Books2share#readme",
   "devDependencies": {
     "nodemon": "^1.18.11"
+  },
+  "dependencies": {
+    "env2": "^2.2.2",
+    "pg": "^7.9.0"
   }
 }
