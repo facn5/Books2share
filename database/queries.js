@@ -21,21 +21,18 @@ const selectBook = (title, cb) => {
   });
 };
 // INSERT INTO books(book_title, publish_year, amount) VALUES(,,);
-// const addBook = (title) => {
-//   const connection = require('./db_connection');
-//   const sql = `SELECT * FROM BOOKS WHERE book_title=${title}`;
-//   connection.query(sql, (err, result) => {
-//     if (err) {
-//       console.log(err, "error");
-//     } else {
-//       console.log(`All books with title :${title} selected`);
-//       connection.end(() => {
-//         console.log('connection closed')
-//       })
-//     }
-//   });
-// };
-//
+const postData = (book_title, publish_year, amount, response, cb) => {
+  const connection = require("./db_connection");
+  connection.query(
+    "INSERT INTO books (book_title, publish_year, amount) VALUES ($1, $2, $3)",
+    [book_title, publish_year, amount],
+    (err, res) => {
+      if (err) return cb(err);
+      cb(null, res, response);
+    }
+  );
+};
+
 // const reserveBook = (title) => {
 //   const connection = require('./db_connection');
 //   const sql = `SELECT * FROM BOOKS WHERE book_title=${title}`;
@@ -52,5 +49,6 @@ const selectBook = (title, cb) => {
 // };
 
 module.exports = {
-  selectBook
+  selectBook,
+  postData
 };
