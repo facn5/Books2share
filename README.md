@@ -1,5 +1,4 @@
 # Books2share
-# BooksPostgresSQL
 
 [Link to our application](https://books2share.herokuapp.com/)
 
