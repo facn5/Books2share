@@ -56,7 +56,7 @@ const handlePost = (req, res) => {
     if (body != null) {
       const ps = qs.parse(body);
       getqueries.postData(ps.name, ps.year, ps.amount, res, (err, result) => {
-        if (err) return console.log("error");
+        if (err) return console.log(JSON.stringify(body));
         res.writeHead(302, { Location: "/" });
         res.end();
       });
