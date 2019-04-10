@@ -35,8 +35,13 @@ input[type="button"] {
   text-transform: uppercase;
   box-shadow: 0 0.4rem 1rem -0.4rem purple;
 }
+<<<<<<< HEAD
 
 #book {
+=======
+button{}
+#test {
+>>>>>>> affcd332524009a05016642f1cf304e088fac6e1
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -67,4 +72,50 @@ header {
   height: 30%;
   text-align: center;
   line-height: 10%;
+}
+
+.container {
+  width: 100%;
+  min-width: 320px;
+  height: auto;
+  margin: 0 auto;
+  padding: 60px 30px;
+  text-align: center;
+  background: white;
+  border-top: 80px solid rgba($btn-color, 0.3);
+  border-bottom: 80px solid rgba($btn-color, 0.3);
+  box-sizing: border-box;
+  align-self: center;
+}
+
+.click {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#window {
+  width: 500px;
+  height: 500px;
+  background-color: #f00;
+  position: absolute;
+  text-align: center;
+  top: 20px;
+  left: 30%;
+  border-radius: 10%;
+  display: none;
+}
+
+#window p {
+  font-family: tahoma;
+  font-size: 17px;
+  line-height: 500px;
+}
+#close {
+  position: absolute;
+  top: -40px;
+  right: 50px;
+  cursor: pointer;
+  background-color: black;
+  font-family: tahoma;
+  color: #fff;
 }
