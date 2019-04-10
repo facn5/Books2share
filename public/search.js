@@ -1,8 +1,7 @@
 // var inputField = document.getElementById("search-input");
 function hey(value) {
-
   fetch("search?" + value)
-    .then((response) => {
+    .then(response => {
       if (response.status !== 200) {
         console.log(
           "Looks like there was a problem. Status Code: " + response.status
