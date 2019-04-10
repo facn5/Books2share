@@ -82,7 +82,7 @@ const searchHandler = (url, res) => {
     if (err) {
       console.log("there is an error");
     }
-    res.writeHead(200, exType.json);
+    res.writeHead(200, exType.html);
     //  console.log("the result is ", result);
     res.end(JSON.stringify(result));
   });
