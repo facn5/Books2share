@@ -32,7 +32,9 @@ input[type="button"] {
   text-transform: uppercase;
   box-shadow: 0 0.4rem 1rem -0.4rem purple;
 }
-button{}
+button{
+
+}
 #test {
   display: flex;
   flex-direction: row;
