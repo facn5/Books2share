@@ -20,12 +20,13 @@ function hey(value) {
 }
 
 function fillBookList(data) {
-  let booksList = document.getElementById('booksList').innerHTML = "";
+  let booksList = document.getElementById('data').innerHTML = "";
 
   for (let i in data) {
     console.log("inside dom :" + data[i].book_title);
     console.log("inside dom :" + data[i].amount);
     let newBook = document.createElement('div');
+    newBook.id = "test";
     let title = document.createElement("h2");
     title.innerText = data[i].book_title;
     let amount = document.createElement("h3");
