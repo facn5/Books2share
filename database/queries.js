@@ -20,7 +20,7 @@ const selectBook = (title, cb) => {
     }
   });
 };
-
+// INSERT INTO books(book_title, publish_year, amount) VALUES(,,);
 // const addBook = (title) => {
 //   const connection = require('./db_connection');
 //   const sql = `SELECT * FROM BOOKS WHERE book_title=${title}`;
