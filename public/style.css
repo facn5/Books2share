@@ -35,13 +35,8 @@ input[type="button"] {
   text-transform: uppercase;
   box-shadow: 0 0.4rem 1rem -0.4rem purple;
 }
-<<<<<<< HEAD
 
 #book {
-=======
-button{}
-#test {
->>>>>>> affcd332524009a05016642f1cf304e088fac6e1
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
