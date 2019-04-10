@@ -13,9 +13,10 @@ const router = (req, res) => {
     handler.search(url, res);
   } else if (url === "/postdata") {
     if (req.method === "POST") {
-      console.log("mr7sh mmmmmmmmmmmmmmm");
       handler.post(req, res);
     }
+  } else if (url.includes("remove?")) {
+    handler.remove(url, res);
   } else {
     handler.error(url, res);
   }

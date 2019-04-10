@@ -10,49 +10,38 @@
   <div class="header">
     <h1>Books2share</h1>
   </div>
-  <header>Welcome to our book sharing system.</header>
-  <label for="searchinput">Search:</label>
 
+  <header>Welcome to our book sharing system.</header>
+  <label for="search">Search:</label>
   <input type="text" id="searchinput" value="" placeholder="What book you are looking for?" />
   <input type="button" name="searchbtn" value="Search" onclick="hey('search?',searchinput.value)" />
-  <input type="button" name="add" value="Add" onclick="simulator_FB ()" id="click_button"/>
+  <input type="button" name="add" value="Add" />
   <hr />
+
   <div id="booksList" class="">
-    <h3>Book Title</h3>
-    <h3>Number of available books</h3>
-    <!--
-            <div id="koko">
-              <input type="button" name="reserve" value="reserve" />
-              <input type="button" name="return" value="return" />
-            </div>
-            -->
+    <div class="listHeaders">
+      <h3>Book Title</h3>
+      <h3>Number of available books</h3>
+    </div>
+
     <div id="data"></div>
   </div>
-<br>
-  <div class="click">
-
-  </div>
-  <div id="window">
-    <form action="/postdata" name="myform" method="POST">
-      Name:
-      <input name="name" type="text" id="cnm" value="" placeholder="What book you are looking for?" />
+  <form action="/postdata" name="myform" method="POST">
+    <div id="test-popup" class="white-popup mfp-hide">
+      <h2>Add a Book.</h2>
+      Book Name
+      <input type="text" name="name" id="ccr" value="" placeholder="What book you are looking for?" />
       <br />
+      Publish Year
+      <input type="text" id="ccd" name="year" value="" placeholder="What book you are looking for?" />
       <br />
-      Year:
-      <input name="year" type="text" id="cbm" value="" placeholder="What book you are looking for?" />
-      <br />
-      <br />
-      Amount:
-      <input name="amount" type="text" id="cm" value="" placeholder="What book you are looking for?" />
-<br>
-<br>
-      <input type="submit" id="subsub" value="Submit" >
-
-      <button onclick="simulator_FB_close ()">Close</button>
-    </form>
-  </div>
-  <script src="search.js"></script>
+      Books Amount
+      <input name="amount" type="text" id="ccm" value="" placeholder="What book you are looking for?" />
+    </div>
+    <input type="submit" id="subsub" value="Submit" />
+  </form>
 </body>
 </head>
+<script src="search.js"></script>
 
 </html>

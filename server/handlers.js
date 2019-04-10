@@ -3,7 +3,6 @@ const path = require("path");
 const env2 = require("env2");
 const pg = require("pg");
 const qs = require("querystring");
-// const getData = require("../database/queries/getData.js");
 const getqueries = require("../database/queries.js");
 
 var exType = {
@@ -26,8 +25,7 @@ var exType = {
 
 const indexHandler = res => {
   var filePath = path.join(__dirname, "..", "public", "index.html");
-  console.log(filePath);
-  // console.log(getData);
+  // console.log(filePath);
   fs.readFile(filePath, function(error, file) {
     if (error) {
       res.writeHead(500, exType.html);
@@ -40,13 +38,7 @@ const indexHandler = res => {
   });
 };
 
-// const getDatahandler = response => {
-//   getData((err, books) => {
-//     if (err) return serverError(err, response);
-//     response.writeHead(200, { "Content-Type": "application/json" });
-//     response.end(JSON.stringify(books));
-//   });
-// };
+
 const handlePost = (req, res) => {
   let body = "";
   req.on("data", chunk => {
@@ -56,8 +48,10 @@ const handlePost = (req, res) => {
     if (body != null) {
       const ps = qs.parse(body);
       getqueries.postData(ps.name, ps.year, ps.amount, res, (err, result) => {
-        if (err) return console.log(JSON.stringify(body));
-        res.writeHead(302, { Location: "/" });
+        if (err) return console.log("error");
+        res.writeHead(302, {
+          Location: "/"
+        });
         res.end();
       });
     }
@@ -66,7 +60,7 @@ const handlePost = (req, res) => {
 const assetsHandler = (url, res) => {
   var filePath = path.join(__dirname, "..", "public", url);
   var extension = url.split(".")[1];
-  console.log("assetshandgetqueriesler", filePath);
+  // console.log("assetshandgetqueriesler", filePath);
   fs.readFile(filePath, function(error, file) {
     if (error) {
       res.writeHead(500, exType.html);
@@ -99,18 +93,27 @@ const searchHandler = (url, res) => {
       console.log("there is an error");
     }
     res.writeHead(200, exType.html);
-    //  console.log("the result is ", result);
     res.end(JSON.stringify(result));
   });
+};
 
-  //  res.end(JSON.stringify(temp));
+const removeHandler = (url, res) => {
+  let remove = url.split("?")[1];
+  console.log("remove query is", remove);
+  getqueries.removeBook(remove, (err, result) => {
+    if (err) {
+      console.log("there is an error");
+    }
+    res.writeHead(200, exType.html);
+    res.end(JSON.stringify(result));
+  });
 };
 
 module.exports = {
   index: indexHandler,
-  // Datahan: getDatahandler,
   post: handlePost,
   assets: assetsHandler,
   error: errorHandler,
-  search: searchHandler
+  search: searchHandler,
+  remove: removeHandler
 };
