@@ -27,18 +27,25 @@ function fillBookList(data) {
     console.log("inside dom :" + data[i].amount);
     let newBook = document.createElement('div');
     let title = document.createElement("h2");
-    let amount = document.createElement("h3");
-    let btnReserve = document.createElement("button");
-    let btnReturn = document.createElement("button");
     title.innerText = data[i].book_title;
+    let amount = document.createElement("h3");
     amount.innerText = data[i].amount;
+    let btnReserve = document.createElement("input");
+    btnReserve.type = "button";
+    btnReserve.value = "Reserve";
+    btnReserve.onclick = "reserve()";
+    let btnReturn = document.createElement("input");
+    btnReturn.type = "button";
+    btnReturn.value = "Return";
+    btnReturn.onclick = "reserve()";
+
+
     newBook.appendChild(title);
     newBook.appendChild(amount);
     newBook.appendChild(btnReserve);
     newBook.appendChild(btnReturn);
     document.getElementById('booksList').appendChild(newBook);
-    // document.getElementById('booksList').appendChild(title);
-    // document.getElementById('booksList').appendChild(btnReserve);
+
   }
 }
 // inputField.addEventListener("keyup", function(event) {
