@@ -2,7 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const env2 = require("env2");
 const pg = require("pg");
-// const getData = require("../database/queries/getData.js");
 const getqueries = require("../database/queries.js");
 
 var exType = {
@@ -26,7 +25,6 @@ var exType = {
 const indexHandler = res => {
   var filePath = path.join(__dirname, "..", "public", "index.html");
   console.log(filePath);
-  // console.log(getData);
   fs.readFile(filePath, function(error, file) {
     if (error) {
       res.writeHead(500, exType.html);
@@ -38,14 +36,6 @@ const indexHandler = res => {
     res.end();
   });
 };
-
-// const getDatahandler = response => {
-//   getData((err, books) => {
-//     if (err) return serverError(err, response);
-//     response.writeHead(200, { "Content-Type": "application/json" });
-//     response.end(JSON.stringify(books));
-//   });
-// };
 
 const assetsHandler = (url, res) => {
   var filePath = path.join(__dirname, "..", "public", url);
@@ -83,16 +73,24 @@ const searchHandler = (url, res) => {
       console.log("there is an error");
     }
     res.writeHead(200, exType.html);
-    //  console.log("the result is ", result);
     res.end(JSON.stringify(result));
   });
+};
 
-  //  res.end(JSON.stringify(temp));
+const removeHandler = (url, res) => {
+  let reserve = url.split("?")[1];
+  console.log("remove query is", reserve);
+  getqueries.resBook(reserve, (err, result) => {
+    if (err) {
+      console.log("there is an error");
+    }
+    res.writeHead(200, exType.html);
+    res.end(JSON.stringify(result));
+  });
 };
 
 module.exports = {
   index: indexHandler,
-  // Datahan: getDatahandler,
   assets: assetsHandler,
   error: errorHandler,
   search: searchHandler
