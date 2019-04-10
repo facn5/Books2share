@@ -1,9 +1,8 @@
 // var inputField = document.getElementById("search-input");
 
 function hey(value) {
-
   fetch("search?" + value)
-    .then((response) => {
+    .then(response => {
       if (response.status !== 200) {
         console.log(
           "Looks like there was a problem. Status Code: " + response.status
@@ -13,9 +12,13 @@ function hey(value) {
       console.log(response);
       return response.json();
     })
-    .then((myJson) => {
+    .then(myJson => {
       console.log(JSON.stringify(myJson));
-    }).catch(err => {
+    })
+    .then(myJson => {
+      console.log(JSON.stringify(myJson));
+    })
+    .catch(err => {
       console.log("Fetch Error :-S", err);
     });
 }
