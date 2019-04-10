@@ -15,6 +15,9 @@ function hey(value) {
     .then(myJson => {
       console.log(JSON.stringify(myJson));
     })
+    .then(myJson => {
+      console.log(JSON.stringify(myJson));
+    })
     .catch(err => {
       console.log("Fetch Error :-S", err);
     });
