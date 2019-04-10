@@ -42,3 +42,14 @@ label,
 header {
   font-weight: bold;
 }
+
+.header {
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  height: 30%;
+
+  text-align: center;
+  line-height: 10%;
+}
