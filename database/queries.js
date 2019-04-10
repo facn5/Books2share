@@ -1,17 +1,22 @@
-const fs = require('fs');
+const fs = require("fs");
 
 const selectBook = (title, cb) => {
-  const connection = require('./db_connection');
-  const sql = `SELECT * FROM BOOKS WHERE book_title=${title}`;
+  const connection = require("./db_connection");
+  const sql = `SELECT * FROM books WHERE book_title LIKE '%${title}%';`;
   connection.query(sql, (err, result) => {
     if (err) {
+      console.log(err);
       cb(err);
     } else {
-      cb(null, result.rows)
-      console.log(`All books with title :${title} selected`);
-      connection.end(() => {
-        console.log('connection closed')
-      })
+      console.log("why not working", title);
+      console.log(
+        `All books with title :${JSON.stringify(result.rows)} selected`
+      );
+
+      cb(null, result.rows);
+      // connection.end(() => {
+      //   console.log("connection closed");
+      // });
     }
   });
 };
@@ -47,5 +52,5 @@ const selectBook = (title, cb) => {
 // };
 
 module.exports = {
-  selectBook,
+  selectBook
 };
