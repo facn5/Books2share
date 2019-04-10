@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const env2 = require("env2");
 const pg = require("pg");
+const qs = require("querystring");
 // const getData = require("../database/queries/getData.js");
 const getqueries = require("../database/queries.js");
 
@@ -46,7 +47,22 @@ const indexHandler = res => {
 //     response.end(JSON.stringify(books));
 //   });
 // };
-
+const handlePost = (req, res) => {
+  let body = "";
+  req.on("data", chunk => {
+    body += chunk.toString();
+  });
+  req.on("end", () => {
+    if (body != null) {
+      const ps = qs.parse(body);
+      getqueries.postData(ps.name, ps.year, ps.amount, res, (err, result) => {
+        if (err) return console.log("error");
+        res.writeHead(302, { Location: "/" });
+        res.end();
+      });
+    }
+  });
+};
 const assetsHandler = (url, res) => {
   var filePath = path.join(__dirname, "..", "public", url);
   var extension = url.split(".")[1];
@@ -93,6 +109,7 @@ const searchHandler = (url, res) => {
 module.exports = {
   index: indexHandler,
   // Datahan: getDatahandler,
+  post: handlePost,
   assets: assetsHandler,
   error: errorHandler,
   search: searchHandler

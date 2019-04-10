@@ -1,6 +1,8 @@
 // var inputField = document.getElementById("search-input");
-function hey(value) {
-  fetch("search?" + value)
+var x = document.getElementById("subsub");
+// x.addEventListener
+function hey(path, value) {
+  fetch(path + value)
     .then(response => {
       if (response.status !== 200) {
         console.log(
@@ -11,21 +13,21 @@ function hey(value) {
       console.log(response);
       return response.json();
     })
-    .then((myJson) => {
-      // console.log(JSON.stringify(myJson));
+
+    .then(myJson => {
       fillBookList(myJson);
-    }).catch(err => {
+    })
+    .catch(err => {
       console.log("Fetch Error :-S", err);
     });
 }
-
 function fillBookList(data) {
-  let booksList = document.getElementById('data').innerHTML = "";
+  let booksList = (document.getElementById("data").innerHTML = "");
 
   for (let i in data) {
     console.log("inside dom :" + data[i].book_title);
     console.log("inside dom :" + data[i].amount);
-    let newBook = document.createElement('div');
+    let newBook = document.createElement("div");
     newBook.id = "test";
     let title = document.createElement("h2");
     title.innerText = data[i].book_title;
@@ -40,13 +42,11 @@ function fillBookList(data) {
     btnReturn.value = "Return";
     btnReturn.onclick = "reserve()";
 
-
     newBook.appendChild(title);
     newBook.appendChild(amount);
     newBook.appendChild(btnReserve);
     newBook.appendChild(btnReturn);
-    document.getElementById('booksList').appendChild(newBook);
-
+    document.getElementById("booksList").appendChild(newBook);
   }
 }
 // inputField.addEventListener("keyup", function(event) {
@@ -55,4 +55,9 @@ function fillBookList(data) {
 //   if (event.keyCode === 13) {
 //     hey(document.getElementById("search-input").value);
 //   }
+// });
+// $(".open-popup-link").magnificPopup({
+//   type: "inline",
+//   midClick: true,
+//   mainClass: "mfp-fade"
 // });
