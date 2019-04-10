@@ -1,3 +1,44 @@
+html {
+  background-color: #faf7f6;
+  color: #805466;
+}
 body {
-  text-color: black;
+  text-align: center;
+}
+.table-title {
+  background-color: #3f51b5;
+  text-align: center;
+  width: 100%;
+  height: 10%;
+  font-weight: 400;
+  margin: 0;
+
+  color: white;
+  font-size: 2em;
+  line-height: 90%;
+}
+#searchinput {
+  width: 50%;
+}
+input[type="button"] {
+  background: rebeccapurple;
+  position: relative;
+  color: white;
+  border: none;
+  padding: 0 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.6rem;
+  line-height: 2.8;
+  text-transform: uppercase;
+  box-shadow: 0 0.4rem 1rem -0.4rem purple;
+}
+#booksList {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-evenly;
+}
+label,
+header {
+  font-weight: bold;
 }
